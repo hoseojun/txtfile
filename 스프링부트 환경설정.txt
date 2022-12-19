@@ -1,0 +1,60 @@
+※ STS4 기본 환경설정
+
+1. WEB 관련 Tools 설치 - STS4에서는 WEB 관련 파일(HTML, CSS, JSP)을 기본적으로 제공하지 않아 별도의 Tools 설치해야 사용가능
+※ 설치방법 : Help -> Eclipse marketplace.. -> Eclipse Enterprise Java and Web Developer 검색 후 설치
+
+2. MyBatis 설치 - MyBatis는 Mapper 파일에 SQL코드를 입력해 놓고 DAO 파일에서 필요할 때마다 가져와서 사용할 수 있게 해주는 프레임 워크로  sql문 관리 및 유지보수가 편리해진다
+※ 설치방법 : Help -> Eclipse marketplace.. -> mybatis 검색 -> MyBatipse 설치
+
+3. Thymeleaf 설치 - html 태그에 속성을 추가해 페이지에 동적으로 값을 추가하거나 처리할 수 있도록 해주는 템플릿 엔진(Template Engine)
+※ Thymeleaf는 Eclipse marketplace에서 지원되지 않아 소프으웨어를 직접 설치해야됨
+※ 설치방법 : Help -> Install New Software -> Work with 항목에 http://www.thymeleaf.org/eclipse-plugin-update-site 검색 ->Thymeleaf Eclipse Plugin 선택, Next를 클릭해서 설치
+
+4. Show heap status - 현재 STS4 사용 메모리 표시 기능으로 버벅일때 휴지통 클릭하여 메모리 정리 가능
+Window -> Preferences -> General -> Shop heap Status 체크 후 Apply 
+
+5. UTP-8 설정 - HTML, JSP등 화면에서 한글깨짐 없이 출력하기 위해서 설정
+Window -> Preferences -> General -> Content Type -> Text 선택 -> Default encoding : UTF-8 입력 후 Update
+Window -> Preferences -> Text -> JavaProperties File 선택 -> Default encoding : UTF-8 입력 후 Update
+Window -> Preferences -> Text -> Spring Properties File 선택 -> Default encoding : UTF-8 입력 후 Update
+Window -> Preferences -> General -> Workspace -> Text file encoding : UTF-8로 변경 후 Apply
+Window -> Preferences -> Web -> CSS Files -> Encoding : ISO 10646/Unicode(UTF-8)로 변경 후 Apply
+Window -> Preferences -> Web -> HTML Files -> Encoding : ISO 10646/Unicode(UTF-8)로 변경 후 Apply
+
+6. 패키지 구조 변경
+Package Explorer -> : -> Package Presentation - Hierachical 선택
+
+7. 탭 추가
+Window -> Shop View -> Other -> Breakpoints 추가
+Window -> Shop View -> Other -> History 추가
+Window -> Shop View -> Console, Search, Tasks 선택
+
+8. Perspective 목록 추가 - Package Explorer 패키지 목록에서 New 클릭 시 나오는 파일 목록
+Window -> Perspective -> Customize Perspertive.. -> Shortcuts -> other -> CSS File, HTML File, JSP File 체크
+Window -> Perspective -> Customize Perspertive.. -> Shortcuts -> XML 체크
+Window -> Perspective -> Customize Perspertive.. -> Shortcuts -> MyBatis 체크
+
+9. 파일 저장 시 자동 import 추가 - List 등 일부 클래스는 자동 추가되지 않음
+Window -> Preferences -> Java > Editor -> Save Actions -> Perform the selected actions on save 체크 -> Organize Import 체크
+
+10. 프로젝트 생성 시 Toos 자동호출 설정 - Tools 선택 후 Make Default를 클릭 시 프로젝트를 만들때 해당 Tools 자동선택되어 호출되어 있음
+자주 사용하는 Tools 목록
+Spring Boot DevTools
+Lombok
+Spring Configurayion Processor
+Spring Data JPA
+Mybatis Framework
+MariaDB Driver(사용하는 db 드라이버)
+Thymeleaf
+Spring Web
+
+11. JSP 설정 - STS4는 기본적으로 JSP 사용을 권장하지 않아 추가로 설정을 해주어야 JSP 사용가능
+※ build.gradle 파일 추가
+implementation 'javax.servlet:jstl'
+implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
+
+※ application.properties 파일 추가 - /src/main/webapp 까지 기본경로이지만 webapp 폴더가 없으므로 webapp 포함해서 폴더 생성해야함
+spring.mvc.view.prefix=/WEB-INF/
+spring.mvc.view.suffix=.jsp
+
+위처럼 선언 시 /src/main/webapp/WEB-INF/home.jsp 이런식으로 폴더 및 파일이 셋팅되어야 함

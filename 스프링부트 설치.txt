@@ -1,0 +1,31 @@
+1. JDK 1.8 설치 - JAVA 개발을 위해 설치 필수
+※오라클 계정 로그인 필요
+
+※환경변수 추가하는 경로 : 내 PC 속성 -> 고급 시스템 설정 -> 환경 변수
+
+※시스템 변수 추가 시 입력값
+변수 이름 : JAVA_HOME
+변수 값 : C:\Program Files (x86)\Java\jdk1.8.0_351  (JDK가 설치된 경로)
+
+※시스템 변수 편집
+시스템 변수의 Path 편집 -> 새로 만둘기 -> %JAVA_HOME%bin 입력 후 확인
+
+※JDK 설치완료 확인방법
+CMD에서 javac -version을 입력하고 "javac x.x.xxx" 출력되면 설치완료
+
+
+2. 스프링부트(STS4) 설치 - 최신버전은 호환성 등 오류가 많으므로 4.13 버전으로 설치 진행함
+
+※ SpringToolSuite4.ini 파일 설정
+-Dosgi.requiredJavaVersion=1.8 (설치한 JDK 버전 입력)
+-Xms1024m	(최대, 최소 메모리 설정 값이 동일할 경우 STS4 렉이 줄어든다고 함)
+-Xmx1024m
+-javaagent:C:\SpringBoot\lombok.jar	(lombok 설치 후 lombok.jar 파일 위치 설정)
+
+
+3. lombok 설치 - Java의 반복되는 함수를 자동으로 작성해주는 라이브러 (setter / getter 자동 선언)
+※ 설치방법
+STS4가 설치된 폴더에서 설치 ->Specify location 클릭 -> 스프링부트 exe 파일 선택 -> install / update 클릭
+
+4. 마리아DB 설치 - 그리드원 버전과 동일하게 10.2.17.0 버전 설치
+
